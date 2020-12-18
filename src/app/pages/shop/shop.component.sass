@@ -1,0 +1,46 @@
+@mixin shop-theme($config-or-theme)
+  $color: mat-get-color-config($config-or-theme)
+  @if $color != null
+    @include shop-color($color)
+
+@mixin shop-color($config-or-theme)
+  $config: mat-get-color-config($config-or-theme)
+
+  $primary: map-get($config, primary)
+  $accent: map-get($config, accent)
+  $foreground: map-get($config, foreground)
+  $background: map-get($config, background)
+
+  .filters
+    background-color: mat-color($primary, 400)
+    color: mat-color($foreground, base)
+
+  .products-container
+    background-color: mat-color($background, background)
+    color: mat-color($foreground, base)
+
+main
+  display: grid
+  grid-template-columns: minmax(250px, 20%) 1fr
+  width: 100%
+  height: 100vh
+
+  .filters
+    width: 100%
+    height: 100%
+
+  .products-container
+    width: 100%
+    height: 100%
+    display: grid
+    grid-auto-rows: 1fr
+    grid-template-columns: 1fr
+
+  .two-columns
+    grid-template-columns: 1fr 1fr
+
+  .three-columns
+    grid-template-columns: 1fr 1fr 1fr
+
+  .four-columns
+    grid-template-columns: 1fr 1fr 1fr 1fr
