@@ -1,0 +1,8 @@
+<div class="parent-container" [style.backgroundImage]="currentSlideUrl">
+  <!-- <div [@horizontalExpand]="changeSlideAnim" class="child-container" [style.backgroundImage]="currentSlideUrl"> -->
+    <div [@horizontalExpand]="changeSlideAnim" class="child-container">
+    <div class="btn-container">
+      <div *ngFor="let img of top3; let idx = index" class="slide-btn mat-h1" (click)="changeSlide($event, img)" >0{{ idx + 1 }}</div>
+    </div>
+  </div>
+</div>
