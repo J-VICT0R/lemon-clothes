@@ -1,0 +1,56 @@
+@import '../../../styles/variables'
+
+@mixin nav-menu-theme($config-or-theme)
+    $color: mat-get-color-config($config-or-theme)
+    @if $color != null
+        @include nav-menu-color($color)
+
+
+@mixin nav-menu-color($config-or-theme)
+  $config: mat-get-color-config($config-or-theme)
+  $primary: map-get($config, primary)
+  $accent: map-get($config, accent)
+  $foreground: map-get($config, foreground)
+
+  nav
+    background-color: mat-color($primary)
+
+    li
+      color: mat-color($accent)
+
+nav
+  width: 100%
+  display: flex
+  flex-direction: row
+  padding: 5px
+  position: fixed
+  z-index: $nav-menu-z-index
+
+  & *:nth-child(n)
+    place-self: center
+
+  .logo
+    flex-grow: 18
+    display: grid
+
+  .nav-links
+    flex-grow: 1
+    display: flex
+    flex-direction: row
+
+    li
+      margin-left: 12px
+
+  .nav-icons
+    flex-grow: 1
+    display: grid
+    & :last-child
+      justify-self: end
+  li
+    list-style: none
+    font-family: sans-serif
+    font-weight: bold
+    position: relative
+    cursor: pointer
+    white-space: nowrap
+    display: inline
