@@ -1,0 +1,20 @@
+@mixin app-theme($config-or-theme)
+  $color: mat-get-color-config($config-or-theme)
+  @if $color != null
+    @include app-color($color)
+
+@mixin app-color($config-or-theme)
+  $config: mat-get-color-config($config-or-theme)
+  // Extract the palettes you need from the theme definition.
+  $primary: map-get($config, primary)
+  $accent: map-get($config, accent)
+  $foreground: map-get($config, foreground)
+  $background: map-get($config, background)
+
+  background-color: mat-color($background, background)
+  color: mat-color($foreground, base)
+
+  height: 100%
+  display: grid
+  grid-template-rows: 74px 1fr
+
