@@ -1,0 +1,15 @@
+@include mat-core();
+
+// how to generate custom colors
+// https://stackoverflow.com/questions/47497743/how-to-create-a-custom-color-theme-with-angular5-and-angular-materials
+// http://mcg.mbitson.com/#!?mcgpalette0=%233f51b5
+
+//light Colors Theme
+$lemon-clothes-light-primary: mat-palette($mat-amber);
+$lemon-clothes-light-accent: mat-palette($mat-pink);
+$lemon-clothes-light-warn: mat-palette($mat-red);
+
+//Dark
+$lemon-clothes-dark-primary: mat-palette($mat-gray, 700);
+$lemon-clothes-dark-accent: mat-palette($mat-lime);
+$lemon-clothes-dark-warn: mat-palette($mat-gray);

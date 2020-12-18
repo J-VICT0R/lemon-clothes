@@ -1,0 +1,54 @@
+@import '~@angular/material/theming';
+@import './lemon-clothes-colors.scss';
+
+/* NO Angular Components */
+@import '../app/app.component.sass';
+@import '../app/main-components/nav-menu/nav-menu.component.sass';
+@import '../app/pages/home/home.component.sass';
+@import '../app/pages/home/components/main-slider/main-slider.component.sass';
+@import '../app/pages/shop/shop.component.sass';
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$lemon-clothes-light-theme: mat-light-theme((
+  color: (
+    primary: $lemon-clothes-light-primary,
+    accent: $lemon-clothes-light-accent,
+    warn: $lemon-clothes-light-warn,
+    )
+));
+
+$lemon-clothes-dark-theme: mat-dark-theme((
+  color: (
+    primary: $lemon-clothes-dark-primary,
+    accent: $lemon-clothes-dark-accent,
+    warn: $lemon-clothes-dark-warn,
+  )
+));
+
+
+////Theme Section////
+
+$available-themes: (light: $lemon-clothes-light-theme, dark: $lemon-clothes-dark-theme);
+
+@mixin no-angular-material-components($theme) {
+  @include app-theme($theme);
+  @include nav-menu-theme($theme);
+  @include home-header-theme($theme);
+  @include main-slider-theme($theme);
+  @include shop-theme($theme);
+  // Add no angular material components here
+}
+
+.light-theme {
+  $theme: map-get($available-themes, light);
+  @include angular-material-theme($theme);
+  @include no-angular-material-components($theme);
+}
+
+.dark-theme {
+  $theme: map-get($available-themes, dark);
+  @include angular-material-color($theme);
+  @include no-angular-material-components($theme);
+}
+
