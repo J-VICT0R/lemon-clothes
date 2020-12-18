@@ -1,4 +1,4 @@
-@import '../../../styles/variables'
+@import '../../../../styles/variables'
 
 @mixin nav-menu-theme($config-or-theme)
     $color: mat-get-color-config($config-or-theme)
@@ -8,17 +8,22 @@
 
 @mixin nav-menu-color($config-or-theme)
   $config: mat-get-color-config($config-or-theme)
+
   $primary: map-get($config, primary)
   $accent: map-get($config, accent)
-  $foreground: map-get($config, foreground)
 
-  nav
+  #app-navigation
     background-color: mat-color($primary)
 
     li
       color: mat-color($accent)
 
-nav
+:host
+  height: 100%
+  display: grid
+  grid-template-rows: 74px 1fr
+
+#app-navigation
   width: 100%
   display: flex
   flex-direction: row

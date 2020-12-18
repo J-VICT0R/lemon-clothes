@@ -1,4 +1,4 @@
-<nav>
+<nav id="app-navigation">
   <ul class="nav-links">
     <li *ngFor="let link of links"><a mat-button [routerLink]="link.url" routerLinkActive="router-link-active">{{ link.name }}</a></li>
   </ul>
@@ -13,3 +13,4 @@
     </li>
   </ul>
 </nav>
+<router-outlet></router-outlet>

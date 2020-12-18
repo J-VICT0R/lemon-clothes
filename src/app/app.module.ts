@@ -8,17 +8,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomeModule } from './pages/home/home.module';
 import { ShopModule } from './pages/shop/shop.module';
 import { RouterModule } from '@angular/router';
-import { NavMenuComponent } from './main-components/nav-menu/nav-menu.component';
 import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    NavMenuComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
-    RouterModule,
     AppRoutingModule,
     BrowserAnimationsModule,
 
