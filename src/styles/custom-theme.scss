@@ -40,15 +40,12 @@ $available-themes: (light: $lemon-clothes-light-theme, dark: $lemon-clothes-dark
   // Add no angular material components here
 }
 
-.light-theme {
-  $theme: map-get($available-themes, light);
-  @include angular-material-theme($theme);
-  @include no-angular-material-components($theme);
-}
+$theme: map-get($available-themes, light);
+@include angular-material-theme($theme);
+@include no-angular-material-components($theme);
 
 .dark-theme {
   $theme: map-get($available-themes, dark);
-  @include angular-material-color($theme);
+  @include angular-material-color($theme); // this causes a problem in Material expansible Panel
   @include no-angular-material-components($theme);
 }
-

@@ -12,7 +12,7 @@ export class AppComponent {
 
   @HostBinding('class')
   get themeMode() {
-    return this.darkModeActivated ? 'dark-theme' : 'light-theme';
+    return this.darkModeActivated ? 'dark-theme' : '';
   }
 
   toggleLightMode(_event) {
