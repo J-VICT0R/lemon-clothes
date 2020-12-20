@@ -1,0 +1,39 @@
+<mat-accordion>
+  <mat-expansion-panel hideToggle>
+  </mat-expansion-panel>
+  <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        {{ filter.description }}
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <span [ngSwitch]="filter.description">
+    <div *ngSwitchCase="ProductFilterType.CATEGORY">
+      <div *ngFor="let item of filter.items">
+        <button [class]="selectedCategories.includes(item.value) ? 'selected' : ''" (click)="selectCategory(item.value)" mat-button aria-label="Filter by this color">
+          <div class="btn-content">
+            <span>
+              {{ item.label ? item.label : item.value }}
+            </span>
+          </div>
+        </button>
+      </div>
+    </div>
+    <div *ngSwitchCase="ProductFilterType.COLOR">
+      <div *ngFor="let item of filter.items">
+        <button [class]="'btn-color ' + (selectedColors.includes(item.value)  ? 'selected' : '')" (click)="selectColor(item.value)" mat-button aria-label="Filter by this color">
+          <div class="btn-content">
+            <span>
+              {{ item.label }}
+            </span>
+            <mat-icon [ngStyle]="{'color': item.value }" aria-hidden="false" aria-label="filter color">brightness_1</mat-icon>
+          </div>
+        </button>
+      </div>
+    </div>
+    <p *ngSwitchCase="ProductFilterType.PRICE">
+      {{ maxPriceSelected | currency:'BRL':'symbol-narrow':'4.2-2'}} <mat-slider thumbLabel [(value)]="maxPriceSelected" min="1" [max]="filter.items[0].value"></mat-slider>
+    </p>
+    </span>
+  </mat-expansion-panel>
+</mat-accordion>

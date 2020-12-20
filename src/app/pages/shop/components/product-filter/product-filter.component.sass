@@ -1,0 +1,24 @@
+.mat-accordion .mat-expansion-panel:last-of-type
+  border-radius: 0px
+  box-shadow: none
+
+.btn-color
+  width: 90%
+
+  .btn-content
+    display: grid
+    grid-template-columns: 1fr 1fr
+    grid-template-rows: 1fr
+    place-content: space-around
+    align-items: center
+
+    & *:last-child
+      justify-self: self-end
+
+    & *:first-child
+      justify-self: self-start
+
+.selected
+  border-left: 2px solid white
+  border-radius: 0px
+
