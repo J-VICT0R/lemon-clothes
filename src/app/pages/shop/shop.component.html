@@ -1,6 +1,6 @@
 <main id="shop-page">
   <section class="filters">
-
+    <product-filter *ngFor="let filter of filters" [filter]="filter"></product-filter>
   </section>
   <section class="products-container">
     <product-card *ngFor="let p of products"></product-card>
