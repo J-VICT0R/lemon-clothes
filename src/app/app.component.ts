@@ -8,7 +8,7 @@ import { Component, HostBinding } from '@angular/core';
 
 export class AppComponent {
   title = 'lemon-clothes';
-  darkModeActivated: boolean = false;
+  darkModeActivated: boolean = true;
 
   @HostBinding('class')
   get themeMode() {
