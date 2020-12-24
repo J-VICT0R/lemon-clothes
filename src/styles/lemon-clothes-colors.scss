@@ -4,12 +4,78 @@
 // https://stackoverflow.com/questions/47497743/how-to-create-a-custom-color-theme-with-angular5-and-angular-materials
 // http://mcg.mbitson.com/#!?mcgpalette0=%233f51b5
 
-//light Colors Theme
-$lemon-clothes-light-primary: mat-palette($mat-green);
+$md-purewhite: (
+    50 : #ffffff,
+    100 : #fefefe,
+    200 : #fefefe,
+    300 : #fefefe,
+    400 : #fdfdfd,
+    500 : #fdfdfd,
+    600 : #fdfdfd,
+    700 : #fcfcfc,
+    800 : #fcfcfc,
+    900 : #fcfcfc,
+    A100 : #ffffff,
+    A200 : #ffffff,
+    A400 : #ffffff,
+    A700 : #ffffff,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #000000,
+        500 : #000000,
+        600 : #000000,
+        700 : #000000,
+        800 : #000000,
+        900 : #000000,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+
+$md-pureblack: (
+    50 : #e0e0e0,
+    100 : #b3b3b3,
+    200 : #808080,
+    300 : #4d4d4d,
+    400 : #262626,
+    500 : #000000,
+    600 : #000000,
+    700 : #000000,
+    800 : #000000,
+    900 : #000000,
+    A100 : #a6a6a6,
+    A200 : #8c8c8c,
+    A400 : #737373,
+    A700 : #666666,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #ffffff,
+        400 : #ffffff,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #ffffff,
+        A700 : #ffffff,
+    )
+);
+
+//light
+$lemon-clothes-light-primary: mat-palette($md-purewhite, 50);
 $lemon-clothes-light-accent: mat-palette($mat-amber);
 $lemon-clothes-light-warn: mat-palette($mat-red);
 
 //Dark
-$lemon-clothes-dark-primary: mat-palette($mat-gray, 700);
-$lemon-clothes-dark-accent: mat-palette($mat-lime);
-$lemon-clothes-dark-warn: mat-palette($mat-gray);
+$lemon-clothes-dark-primary: mat-palette($md-pureblack, 700);
+$lemon-clothes-dark-accent: mat-palette($mat-amber);
+$lemon-clothes-dark-warn: mat-palette($mat-red);
