@@ -1,15 +1,22 @@
 import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
-import {MatExpansionModule} from '@angular/material/expansion';
+import { MatExpansionModule } from '@angular/material/expansion';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatInputModule } from '@angular/material/input';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 
 import { ProductCardComponent } from './components/product-card/product-card.component';
+
+const angular = [
+  FormsModule,
+  ReactiveFormsModule
+]
 
 const angularMaterial = [
   MatButtonModule,
@@ -17,7 +24,8 @@ const angularMaterial = [
   MatMenuModule,
   MatSliderModule,
   MatExpansionModule,
-  MatInputModule
+  MatInputModule,
+  MatAutocompleteModule
 ]
 
 @NgModule({
@@ -26,11 +34,13 @@ const angularMaterial = [
   ],
   imports: [
     CommonModule,
+    ...angular,
     ...angularMaterial
   ],
   providers:[
   ],
   exports: [
+    ...angular,
     ...angularMaterial,
     ProductCardComponent
   ]
