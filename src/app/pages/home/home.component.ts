@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ProductImage } from 'src/app/core/models/dto/product-image';
+import { ProductService } from 'src/app/core/services/product.service';
 
 
 @Component({
@@ -8,11 +10,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  url:string = "../../../assets/img/clothes/man/";
-  productsImg:string[] = Array.from({length: 6}, (_v, k) => k + 4)
-    .map(n => `url('${this.url}man (${n}).jpg')`)
+  productsImage: ProductImage[] = this.productService.getProducts().map(p => <ProductImage>{
+    ...p,
+    imageSrc: `../../../assets/img/clothes/${p.genre.toLocaleLowerCase()}/${p.id}.jpg`
+  }).filter(p => p.id < 6)
 
-  constructor() { }
+  constructor(private productService: ProductService) { }
 
   ngOnInit(): void {
     console.log('HOME')
