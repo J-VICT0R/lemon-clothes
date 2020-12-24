@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { DomSanitizer, SafeStyle } from '@angular/platform-browser';
+import { ProductImage } from 'src/app/core/models/dto/product-image';
 
 @Component({
   selector: 'product-card',
@@ -8,8 +8,7 @@ import { DomSanitizer, SafeStyle } from '@angular/platform-browser';
 })
 export class ProductCardComponent implements OnInit {
 
-  @Input() img
-
+  @Input() productImage: ProductImage
   constructor() {}
 
   ngOnInit(): void {
