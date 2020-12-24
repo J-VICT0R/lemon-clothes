@@ -15,6 +15,14 @@ export class NavMenuComponent implements OnInit {
     {
       name: 'Shop',
       url: 'shop'
+    },
+    {
+      name: 'About',
+      url: ''
+    },
+    {
+      name: 'Blog',
+      url: ''
     }
   ]
 

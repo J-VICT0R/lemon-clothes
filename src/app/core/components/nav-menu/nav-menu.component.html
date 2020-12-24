@@ -1,10 +1,10 @@
 <nav id="app-navigation">
+<!--   <a class="logo" routerLink="" aria-label="Angular Material">
+    <img src="../../../../assets/img/lemon.png" alt="angular">
+  </a> -->
   <ul class="nav-links">
     <li *ngFor="let link of links"><a mat-button [routerLink]="link.url" routerLinkActive="router-link-active">{{ link.name }}</a></li>
   </ul>
-  <a class="logo" routerLink="" aria-label="Angular Material">
-    <img src="../../../../assets/img/lemon.png" alt="angular">
-  </a>
   <ul class="nav-icons">
     <li>
       <button (click)="changeLightMode()" mat-icon-button color="accern" aria-label="light-mode-changer">
