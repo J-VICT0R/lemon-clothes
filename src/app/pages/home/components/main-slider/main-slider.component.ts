@@ -43,7 +43,7 @@ export class MainSliderComponent implements OnInit {
   constructor() { }
 
   url:string = "../../../../../assets/img/slide/";
-  top3:string[] = Array.from({length: 3}, (_v, k) => k + 4)
+  top3:string[] = Array.from({length: 3}, (_v, k) => k + 1)
     .map(n => `url('${this.url + n}.jpg')`)
   currentSlideUrl:string = this.top3[0]
 

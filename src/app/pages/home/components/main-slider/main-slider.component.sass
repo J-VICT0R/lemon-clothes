@@ -3,7 +3,6 @@
     @if $color != null
         @include main-slider-color($color)
 
-
 @mixin main-slider-color($config-or-theme)
   $config: mat-get-color-config($config-or-theme)
   // Extract the palettes you need from the theme definition.
@@ -14,11 +13,11 @@
 
   .slide-btn
     color: mat-color($accent)
-    background-color: mat-color($primary)
+    border: solid 3px mat-color($accent)
 
     &:hover
-      background-color: mat-color($accent)
-      color: mat-color($primary)
+      background-color: mat-color($primary)
+      border: none
 
 .parent-container
   height: 100%
