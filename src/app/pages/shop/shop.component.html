@@ -3,6 +3,29 @@
     <product-filter *ngFor="let filter of filters" [filter]="filter"></product-filter>
   </section>
   <section class="products-container">
-    <product-card *ngFor="let p of products"></product-card>
+    <div class="product-container-options">
+      <form class="form-autocomplete">
+        <mat-form-field class="autocomplete">
+          <input type="text"
+                placeholder="You are looking For..."
+                aria-label="Number"
+                matInput
+                [formControl]="myControl"
+                [matAutocomplete]="auto">
+          <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+            <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+              {{option}}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+      </form>
+<!--       <button mat-icon-button disabled aria-label="Example icon button with a open in new tab icon">
+        <mat-icon>view_list</mat-icon>
+      </button>
+      <button mat-icon-button disabled aria-label="Example icon button with a open in new tab icon">
+        <mat-icon>view_module</mat-icon>
+      </button> -->
+    </div>
+    <product-card *ngFor="let p of filteredProducts" [productImage]='p'></product-card>
   </section>
 </main>

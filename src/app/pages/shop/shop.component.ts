@@ -1,6 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductFilterType } from '../../core/models/enum/product-filter-type.enum'
 import { ProductCategory } from '../../core/models/enum/product-category.enum'
+import { ProductService } from '../../core/services/product.service'
+import { removeDuplicatesFromSimpleObjects } from 'src/app/core/util/array-util';
+import { ProductImage } from 'src/app/core/models/dto/product-image';
+import { FormControl } from '@angular/forms';
+import { Observable} from 'rxjs';
+import { map } from 'rxjs/operators'
 
 @Component({
   selector: 'app-shop',
@@ -9,9 +15,18 @@ import { ProductCategory } from '../../core/models/enum/product-category.enum'
 })
 export class ShopComponent implements OnInit {
 
-  constructor() { }
+  constructor(private productService: ProductService) { }
 
-  products: []
+  readonly productsImage: ProductImage[] = this.productService.getProducts().map(p => <ProductImage>{
+      ...p,
+      imageSrc: `../../../assets/img/clothes/${p.genre.toLocaleLowerCase()}/${p.id}.jpg`
+    })
+
+  filteredProducts: ProductImage[] = this.productsImage
+
+  autoCompleteOptions = this.productsImage.map(p => p.name);
+  filteredOptions: Observable<string[]>;
+  myControl = new FormControl();
 
   filters = [
     {
@@ -24,39 +39,33 @@ export class ShopComponent implements OnInit {
     },
     {
       description: ProductFilterType.COLOR,
-      items: [
-      {
-        label: 'Red',
-        value: '#ff0000'
-      },
-      {
-        label: 'Green',
-        value: '#00ff00'
-      },
-      {
-        label: 'Blue',
-        value: '#0000ff'
-      },
-      {
-        label: 'Yellow',
-        value: '#ffff00'
-      },
-      {
-        label: 'Purple',
-        value: '#ff00ff'
-      },
-    ]
+      items: removeDuplicatesFromSimpleObjects(this.productsImage.flatMap(p => p.colors), ["name", "value"]).map(c => {
+        return {
+          label: c.name,
+          value: c.value
+        }
+      })
     },
     {
       description: ProductFilterType.PRICE,
       items: [{
-        value: 1000  // get the highest priced product
+        value: this.productsImage.map(p => p.price).reduce((pp: number, cp: number) => Math.max(pp, cp))
       }]
     }
   ]
 
+  filter(value: string): string[] {
+    const filterValue = value.toLowerCase();
+    const fopts = this.autoCompleteOptions.filter(option => option.toLowerCase().indexOf(filterValue) === 0);
+    this.filteredProducts = this.productsImage.filter(p => fopts.includes(p.name))
+    return fopts
+  }
+
   ngOnInit(): void {
-    console.log('SHOP')
+    console.log(this.productsImage)
+    this.filteredOptions = this.myControl.valueChanges.pipe(
+      map(value => this.filter(value))
+    )
   }
 
 }
