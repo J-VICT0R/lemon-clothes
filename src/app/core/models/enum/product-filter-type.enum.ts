@@ -1,7 +1,8 @@
 export enum ProductFilterType {
   COLOR,
   CATEGORY,
-  PRICE
+  PRICE,
+  NAME
 }
 
 export namespace ProductFilterType {
@@ -13,6 +14,8 @@ export namespace ProductFilterType {
         return 'Color'
       case ProductFilterType.PRICE:
         return 'Price'
+      case ProductFilterType.NAME:
+        return 'Name'
       default:
         return 'Unknown'
     }
