@@ -7,6 +7,9 @@
 @import '../app/pages/home/home.component.sass';
 @import '../app/pages/home/components/main-slider/main-slider.component.sass';
 @import '../app/pages/shop/shop.component.sass';
+@import '../app/pages/shop/components/product-filter/product-filter.component.sass';
+@import '../app/shared/components/product-card/product-card.component.sass';
+@import '../app/shared/components/product-card-dialog/product-card-dialog.component.sass';
 
 // Create the theme object. A theme consists of configurations for individual
 // theming systems such as "color" or "typography".
@@ -37,15 +40,33 @@ $available-themes: (light: $lemon-clothes-light-theme, dark: $lemon-clothes-dark
   @include home-header-theme($theme);
   @include main-slider-theme($theme);
   @include shop-theme($theme);
+  @include product-card-theme($theme);
+  @include product-filter-theme($theme);
   // Add no angular material components here
+}
+
+.dark-theme {
+  $theme: map-get($available-themes, dark);
+  @include angular-material-color($theme);
+  @include no-angular-material-components($theme);
+
+  &::-webkit-scrollbar {
+    background-color: mat-color(map-get($theme, primary))
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: mat-color(map-get($theme, accent))
+  }
 }
 
 $theme: map-get($available-themes, light);
 @include angular-material-theme($theme);
 @include no-angular-material-components($theme);
 
-.dark-theme {
-  $theme: map-get($available-themes, dark);
-  @include angular-material-color($theme); // this causes a problem in Material expansible Panel
-  @include no-angular-material-components($theme);
+body::-webkit-scrollbar {
+  background-color: mat-color(map-get($theme, primary))
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: mat-color(map-get($theme, accent))
 }
