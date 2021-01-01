@@ -13,11 +13,12 @@
 
   .slide-btn
     color: mat-color($accent)
-    border: solid 3px mat-color($accent)
+    border-left: solid 3px mat-color($accent)
+    transition: all 0.5s
 
     &:hover
-      background-color: mat-color($primary)
-      border: none
+      color: mat-color($accent, 800)
+      border-left: solid 3px mat-color($accent, 800)
 
 .parent-container
   height: 100%
