@@ -1,6 +1,6 @@
 <main id="shop-page">
   <section class="filters">
-    <product-filter *ngFor="let filter of filters" [filter]="filter"></product-filter>
+    <product-filter [products]="initialProductsImage" (filterEmitter)="filterReceiver($event)"></product-filter>
   </section>
   <section class="products-container">
     <div class="product-container-options">

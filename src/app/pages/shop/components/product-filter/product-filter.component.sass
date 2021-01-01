@@ -1,3 +1,21 @@
+@mixin product-filter-theme($config-or-theme)
+    $color: mat-get-color-config($config-or-theme)
+    @if $color != null
+        @include product-filter-color($color)
+
+@mixin product-filter-color($config-or-theme)
+  $config: mat-get-color-config($config-or-theme)
+
+  $primary: map-get($config, primary)
+  $background: map-get($config, background)
+  $accent: map-get($config, accent)
+
+  #product-filter
+    .selected
+      border-left: 2px solid mat-color($accent)
+    .price
+      color: mat-color($accent)
+
 .mat-expansion-panel
   transition: inherit
 
@@ -25,6 +43,9 @@
       justify-self: self-start
 
 .selected
-  border-left: 2px solid white
   border-radius: 0px
 
+.price-slider
+  display: flex
+  align-items: center
+  justify-content: space-between
