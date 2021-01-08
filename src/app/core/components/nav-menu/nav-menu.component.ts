@@ -38,7 +38,5 @@ export class NavMenuComponent implements OnInit {
     this.changeLightModeEmitter.emit(!this.darkModeActivated)
   }
 
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void { }
 }
