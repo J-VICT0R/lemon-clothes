@@ -1,8 +1,56 @@
-.product
+@mixin product-card-theme($config-or-theme)
+    $color: mat-get-color-config($config-or-theme)
+    @if $color != null
+        @include product-card-color($color)
+
+@mixin product-card-color($config-or-theme)
+  $config: mat-get-color-config($config-or-theme)
+
+  $primary: map-get($config, primary)
+  $background: map-get($config, background)
+  $accent: map-get($config, accent)
+
+  .product-container
+    .actions-container
+      backdrop-filter: blur(15px)
+      transition: background-color 0.75s
+      &:hover
+        background-color: mat-color($background, background)
+      & button:nth-child(n)
+          margin-top: 2px
+          transition: transform 0.2s ease-in-out
+          &:hover
+            transform: scale(1.15)
+
+    .price
+      color: mat-color($accent)
+      background-color: mat-color($background, background)
+
+.product-container
   width: 100%
   height: 100%
+  position: relative
+  opacity: 0.99
+
+  .price
+    position: absolute
+    right: 0
+    top: 0
+    font-family: fantasy
+    font-size: large
+    padding: 2px
+
+  .actions-container
+    width: 100%
+    height: 50px
+    position: absolute
+    bottom: 0
+    display: flex
+    align-items: center
+    justify-content: space-evenly
 
   img
     width: 100%
     height: 100%
     object-fit: cover
+    cursor: zoom-in

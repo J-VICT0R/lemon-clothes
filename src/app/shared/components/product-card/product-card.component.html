@@ -1,4 +1,15 @@
-<!-- <div class="product" [style.backgroundImage]="img"> -->
-<div class="product">
-  <img [src]="productImage.imageSrc">
+<div class="product-container">
+  <img (dblclick)="zoomImg(productImage)" [src]="productImage.imageSrc">
+  <span class="price" aria-label="price">{{ productImage.price | currency }}</span>
+  <div class="actions-container">
+    <button mat-icon-button color="accent">
+      <mat-icon>add_shopping_cart</mat-icon>
+    </button>
+    <button mat-icon-button color="accent">
+      <mat-icon>favorite</mat-icon>
+    </button>
+    <button mat-icon-button color="accent">
+       <mat-icon>share</mat-icon>
+    </button>
+  </div>
 </div>

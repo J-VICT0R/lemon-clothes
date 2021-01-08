@@ -9,9 +9,11 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatInputModule } from '@angular/material/input';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatDialogModule } from '@angular/material/dialog';
 
 
 import { ProductCardComponent } from './components/product-card/product-card.component';
+import { ProductCardDialogComponent } from './components/product-card-dialog/product-card-dialog.component';
 
 const angular = [
   FormsModule,
@@ -25,12 +27,14 @@ const angularMaterial = [
   MatSliderModule,
   MatExpansionModule,
   MatInputModule,
-  MatAutocompleteModule
+  MatAutocompleteModule,
+  MatDialogModule
 ]
 
 @NgModule({
   declarations: [
-    ProductCardComponent
+    ProductCardComponent,
+    ProductCardDialogComponent
   ],
   imports: [
     CommonModule,
