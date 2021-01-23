@@ -67,7 +67,7 @@ export class ProductFilterComponent implements OnInit {
 
   ngOnInit(): void {
     this.initialColors = removeDuplicatesFromSimpleObjects(this.products.flatMap(p => p.colors), ["name", "value"])
-    this.initialCategories = Object.values(ProductCategory)
+    this.initialCategories = Object.values(ProductCategory).filter(v => !(typeof v === 'function')) as ProductCategory[]
     this.initialMaxPrice = this.products.map(p => p.price).reduce((pp: number, cp: number) => Math.max(pp, cp))
 
     this.maxPriceSelected = this.initialMaxPrice
